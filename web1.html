@@ -9,11 +9,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script>
-        $(document).ready(function(){
-            $("#ShowGrid").click(function(){
-                alert("Nombre: " + $("#username").val());
-            });
-        });
+$(document).ready(function(){
+
+    $("#ShowGrid").click(function(){
+
+        $.get("https://api.github.com/users/" + $("#username").val() + "/repos",function(data, status){
+
+                alert("Nombre: " + $("#username").val() + "\nStatus: " + status + "\nRepos recibidos: " + data.length);
+            }
+        );
+
+    });
+
+});
     </script>
 </head>
 <body>
